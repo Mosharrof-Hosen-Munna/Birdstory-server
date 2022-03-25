@@ -7,8 +7,9 @@ const app = express();
 const PORT = process.env.port || 5000;
 
 app.use(express.json());
+app.use(cors());
 
-const MONGODB_URI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@project.wytfk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const MONGODB_URI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@project.wytfk.mongodb.net/Birdstory?retryWrites=true&w=majority`;
 
 // import routes
 const authRoutes = require("./Routes/authRoutes");

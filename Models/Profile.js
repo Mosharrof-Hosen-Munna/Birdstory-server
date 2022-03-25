@@ -26,6 +26,9 @@ const profileSchema = new Schema(
       maxlength: 500,
       trim: true,
     },
+    phone: String,
+    address: String,
+    birthDate: Date,
     pic: String,
     coverPic: String,
     link: {
@@ -40,10 +43,12 @@ const profileSchema = new Schema(
         ref: "Post",
       },
     ],
-    bookmarks: {
-      type: Schema.Types.ObjectId,
-      ref: "Post",
-    },
+    bookmarks: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Post",
+      },
+    ],
   },
   { timestamps: true }
 );

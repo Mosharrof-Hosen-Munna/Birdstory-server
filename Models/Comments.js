@@ -1,47 +1,39 @@
-// title, body,author ,thumbnail,tags ,readtime,likes, dislikes, comments
 const { Schema, model } = require("mongoose");
-// const Comment = require('./Comment')
-// const User = require('./User')
 
-const postSchema = new Schema(
+const commentSchema = new Schema(
   {
-    title: {
-      type: String,
-      trim: true,
-      required: true,
-      maxlength: 100,
-    },
     body: {
       type: String,
       trim: true,
+      required: true,
     },
     author: {
       type: Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
-    thumbnail: String,
-    likes: [
+    commentLikes: [
       {
         type: Schema.Types.ObjectId,
         ref: "User",
       },
     ],
-    dislikes: [
+    commentDislikes: [
       {
         type: Schema.Types.ObjectId,
         ref: "User",
       },
     ],
-    comments: [
+    replies: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Comment",
+        ref: "Reply",
       },
     ],
   },
   { timestamps: true }
 );
 
-const Post = model("Post", postSchema);
-module.exports = Post;
+const Comment = model("Comment", commentSchema);
+
+module.exports = Comment;

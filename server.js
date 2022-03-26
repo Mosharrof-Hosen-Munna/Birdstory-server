@@ -13,8 +13,14 @@ const MONGODB_URI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSW
 
 // import routes
 const authRoutes = require("./Routes/authRoutes");
+const postRoutes = require("./Routes/postRoutes");
+const commentRoutes = require("./Routes/commentRoutes");
+const replyRoutes = require("./Routes/replyRoutes");
 
 app.use("/api/auth", authRoutes);
+app.use("/api/posts", postRoutes);
+app.use("/api/posts", commentRoutes);
+app.use("/api", replyRoutes);
 
 app.get("/", (req, res) => {
   res.send("Birdstory running");

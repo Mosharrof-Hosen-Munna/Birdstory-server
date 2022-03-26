@@ -1,4 +1,8 @@
 const {
+  postLikePostController,
+  postDislikePostController,
+} = require("../Controllers/likeDislikeController");
+const {
   getSingleUserPostsController,
   getSinglePostController,
   createPostController,
@@ -9,13 +13,12 @@ const {
 
 const router = require("express").Router();
 
-// get an user posts
-router.get("/posts/:userId", getSingleUserPostsController);
-
 // get all post
-router.get("/posts", getAllPostController);
+router.get("/all", getAllPostController);
+// get an user posts
+router.get("/:userId", getSingleUserPostsController);
 
-// get a single post
+// // get a single post
 router.get("/post/:postId", getSinglePostController);
 
 // create new post
@@ -27,4 +30,9 @@ router.put("/post/update/:postId", updateSinlgePostController);
 // delete a singlePost
 router.delete("/post/delete/:postId", deleteSinglePostController);
 
+// like a post
+router.post("/post/like/:postId", postLikePostController);
+
+// dislike a post
+router.post("/post/dislike/:postId", postDislikePostController);
 module.exports = router;
